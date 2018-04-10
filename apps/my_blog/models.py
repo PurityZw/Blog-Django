@@ -7,10 +7,16 @@ class Category(models.Model):
     """文章分类"""
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class Tag(models.Model):
     """文章标签"""
     name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 
 class Post(models.Model):
@@ -31,3 +37,6 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, blank=True)
     # 关联作者, 一个作者有多篇文章
     author = models.ForeignKey(User)
+
+    def __str__(self):
+        return self.title
